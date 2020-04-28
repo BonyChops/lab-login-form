@@ -1,10 +1,6 @@
 <?php
-$ipAddress=$_SERVER['REMOTE_ADDR'];
-$macAddr=false;
 
 function getMac($ip){
-    echo PHP_OS;
-
     $pramPos = [[0,1],[1,3]];
 
     $WIN = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? true : false;
@@ -26,10 +22,6 @@ function getMac($ip){
         return false;
     }
 }
-
-$macAddr = getMac($ipAddress);
-
-var_dump($macAddr);
 
 function uExplodeSpace($data) {
     $data = preg_replace('/[\n\r\t]/', ' ', $data);

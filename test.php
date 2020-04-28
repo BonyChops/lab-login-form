@@ -1,4 +1,6 @@
-
+<?php
+require_once('getMac.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,6 +32,9 @@
       <h1 class="header center orange-text">Welcome to Bony_LAB!</h1>
       <div class="row center">
         <h5 class="header col s12 light">ネットワークを利用するには、Bony_AUTHによる認証が必要です。</h5>
+      </div>
+      <div class="row center">
+        <h5 class="header col s12 light">MAC: <?= getMac($_SERVER['REMOTE_ADDR'])?></h5>
       </div>
       <div class="row center">
         <a href="vscode://" id="download-button" class="btn-large waves-effect waves-light orange">LOGIN</a>
