@@ -23,6 +23,7 @@ function getMac($ip){
             var_dump($ipPos);
             var_dump($ip);
             if($ipPos == $ip){
+                echo "Fuck";
                 return $WIN == true ? $cols[$pramPos[0][1]] : $cols[$pramPos[1][1]];
             }
         }
