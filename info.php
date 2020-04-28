@@ -21,7 +21,7 @@ function getMac($ip){
             $cols = uExplodeSpace($line);
             var_dump($cols);
             $ipPos = $WIN == true ? $cols[$pramPos[0][0]] : substr(sscanf($cols[$pramPos[1][0]],"($s)")[0], 0, -1);
-            echo $ipPos;
+            echo substr(sscanf($cols[$pramPos[1][0]],"($s)")[0], 0, -1);
             if($ipPos == $ip) {
                 $macAddr = $WIN == true ? $cols[$pramPos[0][1]] : $cols[$pramPos[1][1]];
                 break;
