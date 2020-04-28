@@ -5,7 +5,7 @@ $macAddr=false;
 function getMac($ip){
     echo PHP_OS;
 
-    $pramPos = [[0,1],[2,4]];
+    $pramPos = [[0,1],[1,3]];
 
     $WIN = strtoupper(substr(PHP_OS, 0, 3)) === 'WIN' ? true : false;
 
