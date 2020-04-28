@@ -1,5 +1,6 @@
 <?php
 require_once('getMac.php');
+$clientMac = getMac($_SERVER['REMOTE_ADDR']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,13 +29,14 @@ require_once('getMac.php');
   </nav>
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
+      <?php if($clientMac !== FALSE){?>
       <br><br>
       <h1 class="header center orange-text">Welcome to Bony_LAB!</h1>
       <div class="row center">
         <h5 class="header col s12 light">ネットワークを利用するには、Bony_AUTHによる認証が必要です。</h5>
       </div>
       <div class="row center">
-        <h5 class="header col s12 light">MAC: <?= getMac($_SERVER['REMOTE_ADDR'])?></h5>
+        <h5 class="header col s12 light">MAC: <?= $clientMac?></h5>
       </div>
       <div class="row center">
         <a href="vscode://" id="download-button" class="btn-large waves-effect waves-light orange">LOGIN</a>
@@ -42,9 +44,15 @@ require_once('getMac.php');
       <div class="row center">
         Bony_AUTHをPCにインストールする必要があります。<br><a href="./">Bony_AUTHをPCにインストール</a>
       </div>
-
       <br><br>
-
+      <?php }else{ ?>
+        <br><br>
+      <h1 class="header center orange-text">ERROR</h1>
+      <div class="row center">
+        <h5 class="header col s12 light">この端末のMacアドレスが取得できないため、登録することができません。:(</h5>
+      </div>
+      <br><br>
+      <?php } ?>
     </div>
   </div>
 
