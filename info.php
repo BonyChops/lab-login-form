@@ -12,18 +12,13 @@ function getMac($ip){
     $arp=exec('arp -a '.$ip);
     if($arp == "") return false;
     $arp = mb_convert_encoding($arp, "UTF-8", "SJIS");
-    var_dump($arp);
     $lines=explode("\n", $arp);
     #look for the output line describing our IP address
     if((strpos($arp, 'ARP エントリが見つかりませんでした。') === FALSE)&&(strpos($arp, '無効な引数') === FALSE)){
         foreach($lines as $line){
             $cols = uExplodeSpace($line);
-            var_dump($cols);
             $ipPos = $WIN == true ? $cols[$pramPos[0][0]] : substr(sscanf($cols[$pramPos[1][0]],'(%s)')[0], 0, -1);
-            var_dump($ipPos);
-            var_dump($ip);
             if($ipPos == $ip){
-                echo "Fuck";
                 return $WIN == true ? $cols[$pramPos[0][1]] : $cols[$pramPos[1][1]];
             }
         }
@@ -32,7 +27,7 @@ function getMac($ip){
     }
 }
 
-getMac($ipAddress);
+$macAddr = getMac($ipAddress);
 
 var_dump($macAddr);
 
