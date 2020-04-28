@@ -16,13 +16,13 @@ function getMac($ip){
     $lines=explode("\n", $arp);
     #look for the output line describing our IP address
     if((strpos($arp, 'ARP エントリが見つかりませんでした。') === FALSE)&&(strpos($arp, '無効な引数') === FALSE)){
-        foreach($lines as $line)
-        {
+        foreach($lines as $line){
             $cols = uExplodeSpace($line);
             var_dump($cols);
             $ipPos = $WIN == true ? $cols[$pramPos[0][0]] : substr(sscanf($cols[$pramPos[1][0]],'(%s)')[0], 0, -1);
             var_dump($ipPos);
-            if($ipPos == $ip) {
+            var_dump($ip);
+            if($ipPos == $ip){
                 return $WIN == true ? $cols[$pramPos[0][1]] : $cols[$pramPos[1][1]];
             }
         }
