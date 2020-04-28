@@ -1,13 +1,28 @@
 <?php
 require_once('getMac.php');
 $clientMac = getMac($_SERVER['REMOTE_ADDR']);
+if(isset($_GET['dev'])) $clientMac = 'FF:FF:FF:FF:FF:FF';
+
+function ua_smt(){
+  //ユーザーエージェントを取得
+  $ua = $_SERVER['HTTP_USER_AGENT'];
+  //スマホと判定する文字リスト
+  $ua_list = array('iPhone','iPad','iPod','Android');
+   foreach ($ua_list as $ua_smt) {
+  //ユーザーエージェントに文字リストの単語を含む場合はTRUE、それ以外はFALSE
+    if (strpos($ua, $ua_smt) !== false) {
+     return true;
+    }
+  } return false;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Starter Template - Materialize</title>
+  <title>Bony_LAB</title>
 
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,11 +33,11 @@ $clientMac = getMac($_SERVER['REMOTE_ADDR']);
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img src="https://bonychops.com/favicon.ico" width="12%">Bony_LAB</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="https://bonychops.com">Bony_Chops</a></li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
+        <li><a href="https://bonychops.com">Bony_Chops</a></li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
@@ -38,13 +53,22 @@ $clientMac = getMac($_SERVER['REMOTE_ADDR']);
       <div class="row center">
         <h5 class="header col s12 light">MAC: <?= $clientMac?></h5>
       </div>
+      <?php if(!ua_smt()){ ?>
       <div class="row center">
-        <a href="vscode://" id="download-button" class="btn-large waves-effect waves-light orange">LOGIN</a>
+        <a href="javascript: startLogin()" id="download-button" class="btn-large waves-effect waves-light orange">Bony_AUTH で自動認証</a>
       </div>
       <div class="row center">
         Bony_AUTHをPCにインストールする必要があります。<br><a href="./">Bony_AUTHをPCにインストール</a>
       </div>
+      <div class="row center">
+        または、<a href="./">手動で認証する</a>
+      </div>
       <br><br>
+      <?php }else{ ?>
+        <div class="row center">
+        <a href="javascript: startLogin()" id="download-button" class="btn-large waves-effect waves-light orange">認証する</a>
+      </div>
+      <?php } ?>
       <?php }else{ ?>
         <br><br>
       <h1 class="header center orange-text">ERROR</h1>
@@ -53,6 +77,7 @@ $clientMac = getMac($_SERVER['REMOTE_ADDR']);
       </div>
       <br><br>
       <?php } ?>
+
     </div>
   </div>
 
@@ -62,9 +87,21 @@ $clientMac = getMac($_SERVER['REMOTE_ADDR']);
 
 
   <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="js/materialize.js"></script>
   <script src="js/init.js"></script>
-
+  <script src="js/jquery-3.5.0.min.js"></script>
+  <script>
+  function startLogin(){
+    alert("a");
+    $(".section").children(".container").html(`
+      <br><br>
+      <div class="row center">
+        <h5 class="header col s12 light">認証しています...</h5>
+      </div>
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>`);
+  }
+  </script>
   </body>
 </html>
