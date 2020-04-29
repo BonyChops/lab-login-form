@@ -105,9 +105,10 @@ function ua_smt(){
 
   function getTest(){
   test = $.get("jsGetTest.php",
-    {"cd":"100", "name":"Taro"}
-  );
-  alert(test);
+    {"cd":"100", "name":"Taro"}, function( data ) {
+      alert(data);
+} );
+  
   }
   </script>
   </body>
