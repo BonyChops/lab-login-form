@@ -51,6 +51,9 @@ function ua_smt(){
         <h5 class="header col s12 light">ネットワークを利用するには、Bony_AUTHによる認証が必要です。</h5>
       </div>
       <div class="row center">
+        <h5 class="header col s12 light">IP: <?= $_SERVER['REMOTE_ADDR']?></h5>
+      </div>
+      <div class="row center">
         <h5 class="header col s12 light">MAC: <?= $clientMac?></h5>
       </div>
       <?php if(!ua_smt()){ ?>
@@ -87,7 +90,6 @@ function ua_smt(){
   <script src="js/jquery-2.1.1.min.js"></script>
   <script>
   function startLogin(){
-    alert("a");
     $(".section").children(".container").html(`
       <br><br>
       <div class="row center">
