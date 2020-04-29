@@ -99,6 +99,13 @@ function ua_smt(){
         <div class="indeterminate"></div>
       </div>`);
   }
+
+  function getTest(){
+  test = $.get("hoge.php",
+    {"cd":"100", "name":"Taro"}
+  );
+  alert(test);
+  }
   </script>
   </body>
 </html>
