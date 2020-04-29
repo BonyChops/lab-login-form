@@ -104,11 +104,16 @@ function ua_smt(){
   }
 
   function getTest(){
-  test = $.get("jsGetTest.php",
-    {"cd":"100", "name":"Taro"}, function( data ) {
-      alert(data);
-} );
-  
+    $.get("jsGetTest.php",
+      {"cd":"100", "name":"Taro"}, function( data ) {
+        alert(data);
+    } );
+  }
+  window.onload = function(){
+    $.get("jsGetTest.php",
+      {"cd":"100", "name":"Taro"}, function( data ) {
+        if (data == "Yes") startLogin();
+    } );
   }
   </script>
   </body>
