@@ -112,7 +112,9 @@ function ua_smt(){
   window.onload = function(){
     $.get("jsGetTest.php",
       {"cd":"100", "name":"Taro"}, function( data ) {
-        if (data == greeting.trim("True")) startLogin();
+        if (data == greeting.trim("True")) {
+          startLogin();
+          }
     } );
   }
   </script>
