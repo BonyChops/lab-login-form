@@ -114,6 +114,7 @@ function ua_smt(){
       {"cd":"100", "name":"Taro"}, function( data ) {
         if (data == greeting.trim("True")) {
           startLogin();
+          alert("kusa");
           }
     } );
   }
