@@ -57,8 +57,11 @@ function ua_smt(){
         <h5 class="header col s12 light">MAC: <?= $clientMac?></h5>
       </div>
       <?php if(!ua_smt()){ ?>
-      <div class="row center">
+        <div class="row center">
         <a href="javascript: startLogin()" id="download-button" class="btn-large waves-effect waves-light orange">Bony_AUTH で自動認証</a>
+      </div>
+      <div class="row center">
+        <a href="javascript: getTest()" id="download-button" class="btn-large waves-effect waves-light orange">TEST</a>
       </div>
       <div class="row center">
         Bony_AUTHをPCにインストールする必要があります。<br><a href="./">Bony_AUTHをPCにインストール</a>
@@ -101,7 +104,7 @@ function ua_smt(){
   }
 
   function getTest(){
-  test = $.get("hoge.php",
+  test = $.get("jsGetTest.php",
     {"cd":"100", "name":"Taro"}
   );
   alert(test);
