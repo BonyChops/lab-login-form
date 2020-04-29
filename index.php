@@ -112,7 +112,7 @@ function ua_smt(){
   window.onload = function(){
     $.get("jsGetTest.php",
       {"cd":"100", "name":"Taro"}, function( data ) {
-        if (data == "Yes") startLogin();
+        if (data == "True") startLogin();
     } );
   }
   </script>
